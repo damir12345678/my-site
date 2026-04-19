@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Certificate & E-Document Verification</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            background-color: #ffffff;
+        }
+
+        /* --- Header Styles --- */
+        header {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 15px 20px;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        /* Ссылка-логотип сохраняет позиционирование */
+        .logo {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            text-decoration: none;
+        }
+
+        .logo img {
+            height: 58px;
+            display: block;
+            border: none;
+        }
+
+        .header-title {
+            color: #004488;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0;
+            text-align: center;
+        }
+
+        /* --- Main Content Styles --- */
+        main {
+            flex: 1;
+            padding: 40px 20px;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            box-sizing: border-box;
+            background-image: url('behind.png');
+            background-repeat: no-repeat;
+            background-position: bottom right;
+        }
+
+        .status-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .status-title {
+            color: #004488;
+            font-size: 22px;
+            font-weight: bold;
+            margin: 0 0 12px 0;
+        }
+
+        .status-desc {
+            color: #666666;
+            font-size: 15px;
+            margin: 0;
+        }
+
+        /* --- Table Styles --- */
+        .info-table {
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto 50px auto;
+            border-collapse: collapse;
+        }
+
+        .info-table td {
+            padding: 16px 10px;
+            font-size: 15px;
+            vertical-align: top;
+        }
+
+        .info-table td:first-child {
+            color: #666666;
+            width: 45%;
+            padding-left: 0;
+            padding-right: 20px;
+        }
+
+        .info-table td:last-child {
+            color: #0078d7;
+            word-break: break-word;
+        }
+
+        /* --- Button Styles (теперь для тега <a>) --- */
+        .button-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .btn-view {
+            display: block;
+            width: 100%;
+            background-color: #007BFF;
+            color: #ffffff;
+            border: none;
+            padding: 12px 0;
+            font-size: 17px;
+            font-weight: bold;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 0; 
+            text-decoration: none; /* Убирает подчеркивание ссылки */
+            transition: background-color 0.2s;
+            box-sizing: border-box;
+        }
+
+        .btn-view:hover {
+            background-color: #0056b3;
+        }
+
+        /* --- Footer Styles --- */
+        footer {
+            background-color: #e6f3ff;
+            padding: 20px 15px;
+            text-align: center;
+            color: #555555;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .footer-line {
+            margin: 0;
+        }
+
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px;
+            }
+
+            .logo {
+                position: static;
+                transform: none;
+                align-self: flex-start;
+                margin-bottom: 12px;
+            }
+
+            .logo img {
+                height: 50px;
+            }
+
+            .header-title {
+                font-size: 22px;
+                line-height: 1.3;
+            }
+
+            main {
+                padding: 30px 15px;
+            }
+
+            .info-table td:first-child {
+                width: 130px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <a href="https://www.ccs.org.cn/ccsweb/" class="logo">
+            <img src="ccs-logo.png" alt="CCS Logo">
+        </a>
+        <h1 class="header-title">E-Certificate & E-Document Verification</h1>
+    </header>
+
+    <main>
+        <div class="status-container">
+            <h2 class="status-title">VALID</h2>
+            <p class="status-desc">The certificate specified below is valid.</p>
+        </div>
+
+        <table class="info-table">
+            <tbody>
+                <tr><td>UTN</td><td>P026-83687115</td></tr>
+                <tr><td>Cert. No.</td><td>ZG26PPS01017</td></tr>
+                <tr><td>Product</td><td>Copper Alloy Propeller</td></tr>
+                <tr><td>Manufacturer</td><td>Zhoushan East Ocean Propeller-MakingCo.,Ltd.</td></tr>
+                <tr><td>Issued date</td><td>2026-02-27</td></tr>
+                <tr><td>Serial No.</td><td> DH26010021-1</td></tr>
+            </tbody>
+        </table>
+
+        <div class="button-container">
+            <a href="file1/CERTIFICATE_CCS_019.pdf" download class="btn-view">View E-Certificate</a>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-line">All Rights Reserved. Copyright © China Classification Society webmaster@ccs.org.cn Copyright 1996 - 2021</div>
+        <div class="footer-line">CCS Legal Statement Jing ICP No. 12032711-1</div>
+    </footer>
+
+</body>
+</html>
