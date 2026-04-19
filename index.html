@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Certificate & E-Document Verification</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Фоновое изображение с печатью CCS */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('behind.png');
+            background-repeat: no-repeat;
+            background-position: center center;
+            background-size: contain;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Шапка */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px 40px;
+            border-bottom: 1px solid #e0e0e0;
+            position: relative;
+            background-color: #fff;
+        }
+
+        .logo {
+            position: absolute;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-img {
+            width: 80px;
+            height: auto;
+            display: block;
+        }
+
+        .header-title {
+            color: #1a4b9c;
+            font-size: 22px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+        }
+
+        /* Основной контейнер */
+        .main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 40px 20px;
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .status-title {
+            color: #1a4b9c;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            text-align: center;
+        }
+
+        .status-subtitle {
+            color: #555;
+            font-size: 14px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        /* Информационные строки */
+        .info-container {
+            width: 100%;
+            max-width: 1300px;
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 30px;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .info-label {
+            flex: 0 0 40%;
+            text-align: right;
+            color: #555;
+            font-size: 14px;
+            padding-right: 20px;
+        }
+
+        .info-value {
+            flex: 1;
+            color: #1a4b9c;
+            font-size: 14px;
+            text-align: left;
+        }
+
+        /* Кнопка */
+        .btn-view {
+            width: 100%;
+            max-width: 1300px;
+            padding: 16px;
+            background-color: #1a4b9c;
+            color: #ffffff;
+            border: none;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            text-align: center;
+            display: block;
+        }
+
+        .btn-view:hover {
+            background-color: #153d7f;
+        }
+
+        /* Подвал */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: #666;
+            line-height: 1.6;
+            margin-top: auto;
+        }
+
+        .footer a {
+            color: #1a4b9c;
+            text-decoration: none;
+        }
+
+        /* Адаптив для планшетов */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .logo {
+                position: static;
+                transform: none;
+            }
+
+            .header-title {
+                font-size: 18px;
+            }
+
+            .main {
+                padding: 30px 15px;
+            }
+
+            .status-title {
+                font-size: 24px;
+            }
+
+            .info-label {
+                flex: 0 0 35%;
+                font-size: 13px;
+                padding-right: 10px;
+            }
+
+            .info-value {
+                font-size: 13px;
+            }
+        }
+
+        /* Адаптив для мобильных */
+        @media (max-width: 480px) {
+            .header-title {
+                font-size: 16px;
+            }
+
+            .status-title {
+                font-size: 20px;
+            }
+
+            .status-subtitle {
+                font-size: 12px;
+            }
+
+            .info-row {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 4px;
+            }
+
+            .info-label {
+                flex: none;
+                text-align: left;
+                padding-right: 0;
+                font-weight: 600;
+            }
+
+            .info-value {
+                font-size: 13px;
+                word-break: break-word;
+            }
+
+            .btn-view {
+                font-size: 14px;
+                padding: 14px;
+            }
+
+            .footer {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Шапка -->
+    <header class="header">
+        <div class="logo">
+            <img class="logo-img" src="ccs-logo.png" alt="CCS - China Classification Society">
+        </div>
+        <h1 class="header-title">E-Certificate &amp; E-Document Verification</h1>
+    </header>
+
+    <!-- Основной контент -->
+    <main class="main">
+        <h2 class="status-title">VALID</h2>
+        <p class="status-subtitle">The certificate specified below is valid.</p>
+
+        <div class="info-container">
+            <div class="info-row">
+                <div class="info-label">UTN</div>
+                <div class="info-value">P024-84688115</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Cert. No.</div>
+                <div class="info-value">ZG24PPS01677</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Product</div>
+                <div class="info-value">Copper Alloy Propeller</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Manufacturer</div>
+                <div class="info-value">Zhejiang YuanDing Ship Equipment Co.,Ltd.</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Issued date</div>
+                <div class="info-value">2024-07-23</div>
+            </div>
+            <div class="info-row">
+                <div class="info-label">Serial No.</div>
+                <div class="info-value">详见附页/See additional page(s)</div>
+            </div>
+        </div>
+
+        <button class="btn-view" type="button">View E-Certificate</button>
+    </main>
+
+    <!-- Подвал -->
+    <footer class="footer">
+        <div>
+            All Rights Reserved. Copyright © China Classification Society
+            <a href="mailto:webmaster@ccs.org.cn">webmaster@ccs.org.cn</a>
+            Copyright 1996 - 2021
+        </div>
+        <div>CCS Legal Statement Jing ICP No. 12032711-1</div>
+    </footer>
+</body>
+</html>
